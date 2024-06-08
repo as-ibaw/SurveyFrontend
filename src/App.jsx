@@ -56,11 +56,12 @@ const RequireAuth = ({ children }) => {
     }
   }, [isInitialized, isAuthenticated, inProgress, instance, accounts]);
 
-  useEffect(() => {
-    if (isAuthenticated && location.pathname === '/') {
-      navigate('/dashboard');
-    }
-  }, [isAuthenticated, navigate, location.pathname]);
+  // useEffect(() => {
+  //   if (isAuthenticated && location.pathname === '/') {
+  //     console.log('Redirecting to dashboard');
+  //     navigate('/dashboard');
+  //   }
+  // }, [isAuthenticated, navigate, location.pathname]);
 
   if (!isInitialized || (!isAuthenticated && inProgress !== 'none')) {
     return null;
