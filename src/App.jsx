@@ -7,8 +7,8 @@ import { loginRequest } from './authConfig';
 
 import Layout from './components/Layout';
 import PublicLayout from './components/PublicLayout';
-import Dashboard from './pages/dashboard';
-import Login from './pages/login';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import SurveyCreate from './pages/SurveyCreate';
 import SurveyEdit from './pages/SurveyEdit';
