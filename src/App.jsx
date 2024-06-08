@@ -24,9 +24,11 @@ const RequireAuth = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    console.log('Initializing MSAL');
     const initializeMsal = async () => {
       try {
         await instance.initialize();
+        console.log('MSAL initialized');
         setIsInitialized(true);
       } catch (error) {
         console.error('MSAL initialization error:', error);
@@ -37,11 +39,19 @@ const RequireAuth = ({ children }) => {
   }, [instance]);
 
   useEffect(() => {
+    console.log('Checking authentication status');
+    console.log('isInitialized:', isInitialized);
+    console.log('isAuthenticated:', isAuthenticated);
+    console.log('inProgress:', inProgress);
+    console.log('Current path:', location.pathname);
+
     if (isInitialized && !isAuthenticated && inProgress === 'none') {
+      console.log('User not authenticated, redirecting to login');
       instance.loginRedirect(loginRequest).catch((e) => {
         console.error(e);
       });
     } else if (isAuthenticated) {
+      console.log('User authenticated');
       instance.setActiveAccount(accounts[0]);
     }
   }, [isInitialized, isAuthenticated, inProgress, instance, accounts]);
